@@ -1,0 +1,11 @@
+version: '2'
+services:
+ mav:
+   build: maven
+   
+ prod:
+   build: tomcat
+   depends_on:
+     - mav 
+   ports:
+     - "8080:8080"
