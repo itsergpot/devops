@@ -1,0 +1,77 @@
+
+---
+
+- name: install git + jdk + maven + create war
+  hosts: maven
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: Ensure maven, git, jdk packages are present
+    apt:
+      name: maven
+      state: present
+  - name:
+    apt:
+      name: git
+      state: present
+
+  - name: add webupd8 ppa
+    apt_repository: repo='ppa:webupd8team/java'
+
+  - name: Cleanup apt cache
+    command: apt-get clean warn=no
+    changed_when: False
+
+  - name: auto accept oracle jdk license
+    shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+    sudo: yes
+
+  - name: install java8
+    shell: apt-get install -y oracle-java8-installer ca-certificates
+    sudo: yes
+
+  - name: set JAVA_HOME
+    lineinfile:
+      dest: /etc/environment
+      state: present
+      regexp: '^JAVA_HOME'
+      line: 'JAVA_HOME=/usr/lib/jvm/java-8-oracle/'
+
+  - name: git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+    git:
+      repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+      dest: /home/itsergpot/boxfuse-sample-java-war-hello/
+
+  - name: Go to the folder /home/itsergpot/boxfuse-sample-java-war-hello and create .war
+    shell: chdir=/home/itsergpot/boxfuse-sample-java-war-hello ls ;  mvn package
+
+  - name: copy file from maven to local
+    fetch:
+      src: /home/itsergpot/boxfuse-sample-java-war-hello/target/hello-1.0.war
+      dest: /home/itsergpot/
+      flat: yes
+
+- name: install tomcat8 and copy .war
+  hosts: tomcat
+  become: yes
+  user: root
+  become_method: sudo
+
+  tasks:
+  - name: Ensure tomcat8 package is present
+    apt:
+      name: tomcat8
+      state: present
+
+  - name: copy .war from local to tomcat /var/lib/tomcat8/webapps/
+    copy:
+      src: hello-1.0.war
+      dest: /var/lib/tomcat8/webapps/
+
+  - name: Ensure tomcat8 service is started
+    service:
+      name: tomcat8
+      state: started
+
+
