@@ -1,0 +1,133 @@
+---
+organization:
+  departments:
+    1:
+      - employees:
+          - Olga1:
+              name: Olga1
+              position: bookkeeper
+              salary: 200
+              age: 30
+          - Olga_02:
+              name: Olga2
+              position: bookkeeper
+              salary: 200
+              age: 30
+          - Olga_03:
+              name: Olga3
+              position: bookkeeper
+              salary: 250
+              age: 30
+          - Olga_04:
+              name: Olga4
+              position: bookkeeper
+              salary: 250
+              age: 30
+          - Dmitry_01:
+              name: Dmitrij1
+              position:
+              salary: 300
+              age: 30
+          - Dmitry_02:
+              name: Dmitrij2
+              position:
+              salary: 250
+              age: 30
+          - Dmitry_03:
+              name: Dmitrij3
+              position:
+              salary: 250
+              age: 30
+          - Ivan_01:
+              name: Ivan1
+              position:
+              salary: 250
+              age: 30
+          - Ivan_02:
+              name: Ivan2
+              position:
+              salary: 250
+              age: 30
+    2:
+      - employees:
+          - Roman_01:
+              name: Roman1
+              position: jurist
+              salary: 110
+              age: 22
+          - Roman_02:
+              name: Roman2
+              position: jurist
+              salary: 110
+              age: 22
+          - Roman_03:
+              name: Roman3
+              position: jurist
+              salary: 110
+              age: 22
+          - Roman_04:
+              name: Roman4
+              position: jurist
+              salary: 110
+              age: 22
+          - Maxim_01:
+              name: Maksim1
+              position: driver
+              salary: 110
+              age: 22
+          - Maxim_02:
+              name: Maksim2
+              position: driver
+              salary: 110
+              age: 22
+    3:
+      - employees:
+          - Olga_01:
+            name: Olga3_1
+            position: jurist
+            salary: 100
+            age: 30
+          - Nikolay_01:
+              name: Nikolaj
+              position: builder
+              salary: 100
+              age: 30
+          - Ivan_01:
+              name: Ivan
+              position: builder
+              salary: 100
+              age: 30
+    4&5:
+      - employees:
+          - Julia_01:
+              name: Julia1
+              position: clerk
+              salary: 200
+              age: 31
+          - Julia_02:
+              name: Julia2
+              position: clerk
+              salary: 200
+              age: 32
+          - Julia_03:
+              name: Julia3
+              position: clerk
+              salary: 200
+              age: 32
+          - Julia_04:
+              name: Julia4
+              position: clerk
+              salary: 200
+              age: 33
+          - Julia_05:
+              name: Julia5
+              position: clerk
+              salary: 200
+              age: 32
+    6:
+      - employees:
+          - Igor Viktorovich:
+              name: Igor Viktorovich
+              position: director of security
+              salary: 1800
+              age: 59
