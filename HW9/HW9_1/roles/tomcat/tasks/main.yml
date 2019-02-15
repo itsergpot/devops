@@ -1,0 +1,13 @@
+---
+# tasks file for tomcat
+- name: install package
+  apt:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+    - tomcat8
+
+- name: copy .war from local to tomcat /var/lib/tomcat8/webapps/
+  copy: src=/home/itsergpot/devops/HW9/HW9_1/hello-1.0.war dest=/var/lib/tomcat8/webapps/hello-1.0.war mode=0555
+  notify:
+    - tomcat8 started
