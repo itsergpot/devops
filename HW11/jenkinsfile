@@ -1,0 +1,26 @@
+pipeline {
+agent {
+  label 'slave1'
+}
+    stages {
+        stage ('git') {
+            steps {
+            git 'https://github.com/itsergpot/newrepo_boxfuse.git'
+            }
+        }
+        stage ('build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage ('deploy') {
+            steps {
+                sshagent(['e85f081c-b397-4e36-b048-9ed02b6974a6']) {
+                sh 'ssh -o StrictHostKeyChecking=no 35.228.47.204'
+                sh 'cp /root/workspace/HW11/target/hello-1.0.war /var/lib/tomcat8/webapps/'
+                sh 'service tomcat8 restart'
+                }
+            }
+        }
+    }
+}
