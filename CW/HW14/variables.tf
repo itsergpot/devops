@@ -1,0 +1,38 @@
+# Variables
+variable "access_key" {
+	default = "paste your key here"
+}
+variable "secret_key" {
+	default = "paste your secret here"
+}
+variable "region" {
+  default = "us-east-2"
+}
+variable "cidr_vpc" {
+  description = "CIDR block for the VPC"
+  default = "10.1.0.0/16"
+}
+variable "cidr_subnet" {
+  description = "CIDR block for the subnet"
+  default = "10.1.0.0/24"
+}
+variable "availability_zone" {
+  description = "availability zone to create subnet"
+  default = "us-east-2c"
+}
+variable "public_key_path" {
+  description = "Public key path"
+  default = "/home/itsergpot/.ssh/id_rsa.pub"
+}
+variable "instance_ami" {
+  description = "AMI for aws EC2 instance"
+  default = "ami-0653e888ec96eab9b"
+}
+variable "instance_type" {
+  description = "type for aws EC2 instance"
+  default = "t2.micro"
+}
+variable "environment_tag" {
+  description = "Environment tag"
+  default = "Production"
+}
